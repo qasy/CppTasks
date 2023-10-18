@@ -34,14 +34,14 @@ int main()
     size_t num_threads = 6;
     std::vector<double> results;
     std::vector<std::thread> threads;
-    results.resize(num_threads);
+    results.resize(num_threads, 100);
     threads.resize(num_threads);
 
     for (size_t i = 0; i < num_threads; ++i)
     {
         double& result = results[i];
         threads[i]     = std::thread([&result]() { result = Sum(2, 5); });
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(5000));
     }
 
     // std::thread th(Sum, 5, 10);
