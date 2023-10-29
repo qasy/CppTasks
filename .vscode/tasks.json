@@ -12,6 +12,7 @@
 				"${file}",
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}",
+				"-pthread",
 				"-std=c++17",
 				"-Wall"
 			],
@@ -35,6 +36,7 @@
 				"${file}",
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}",
+				"-pthread",
 				"-std=c++17",
 				"-Wall"
 			],
