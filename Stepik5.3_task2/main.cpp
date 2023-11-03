@@ -28,7 +28,7 @@ struct RefCounter
 {
     RefCounter()
     {
-        std::cout << "RefCounter()" << std::endl;
+        // std::cout << "RefCounter()" << std::endl;
         counter = 0;
     }
     size_t counter;
