@@ -184,7 +184,7 @@ int main()
     ai0 = ai1;
     // ai1 = ai1;
     ai2 = ai1;
-    // ai2 = ai0;
+    ai2 = ai0;
 
     // Array<Int2> ai3;
     // Array<Int2> ai4(3, Int2(1));
