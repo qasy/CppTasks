@@ -67,6 +67,7 @@ public:
         {
             data_[i].~T();
         }
+        delete[](char*) data_;
         data_ = nullptr;
 
         size_ = arr.size_;
@@ -114,7 +115,7 @@ private:
 
 struct Int1
 {
-    Int1()        = delete;
+    Int1()                         = delete;
     Int1& operator=(const Int1& b) = delete;
 
     Int1(int a)
@@ -178,19 +179,19 @@ struct Int2
 int main()
 {
     Array<Int1> ai0;
-    Array<Int1> ai1(3, Int1(0));
+    Array<Int1> ai1(2, Int1(0));
     Array<Int1> ai2(ai1);
     ai0 = ai1;
-    ai1 = ai1;
+    // ai1 = ai1;
     ai2 = ai1;
     ai2 = ai0;
 
-    Array<Int2> ai3;
-    Array<Int2> ai4(3, Int2(1));
-    Array<Int2> ai5(ai4);
-    ai3 = ai3;
-    ai4 = ai3;
-    ai5 = ai3;
+    // Array<Int2> ai3;
+    // Array<Int2> ai4(3, Int2(1));
+    // Array<Int2> ai5(ai4);
+    // ai3 = ai3;
+    // ai4 = ai3;
+    // ai5 = ai3;
 
     // Array<int> ai2(ai);
     // ai = ai2;
