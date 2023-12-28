@@ -115,7 +115,7 @@ private:
 
 struct Int1
 {
-    Int1()                         = delete;
+    Int1()        = delete;
     Int1& operator=(const Int1& b) = delete;
 
     Int1(int a)
