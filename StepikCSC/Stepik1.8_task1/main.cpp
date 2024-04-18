@@ -1,4 +1,4 @@
-#include <iostream>
+// #include <iostream>
 
 // определите только функцию power, где
 //    x - число, которое нужно возвести в степень
@@ -17,6 +17,7 @@ int power(int x, unsigned p)
 
 int main()
 {
-    std::cout << power(2, 4) << std::endl;
+    // std::cout << power(2, 4) << std::endl;
+    power(2, 4);
     return 0;
 }
