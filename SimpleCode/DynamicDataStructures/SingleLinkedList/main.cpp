@@ -38,6 +38,7 @@ public:
             current = current->pNext;
             ++counter;
         }
+        // @TODO wa also need to declare some return at this moment
         // return current->data;
     }
 
