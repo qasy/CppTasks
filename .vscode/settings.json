@@ -62,6 +62,12 @@
         "any": "cpp",
         "forward_list": "cpp",
         "list": "cpp",
-        "typeindex": "cpp"
-    }
+        "typeindex": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "numbers": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp"
+    },
+    "editor.formatOnSave": true
 }
