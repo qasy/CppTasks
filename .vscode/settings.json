@@ -68,6 +68,7 @@
         "numbers": "cpp",
         "ranges": "cpp",
         "semaphore": "cpp",
-        "stop_token": "cpp"
-    }
+        "stop_token": "cpp",
+    },
+    "editor.formatOnSave": true
 }
