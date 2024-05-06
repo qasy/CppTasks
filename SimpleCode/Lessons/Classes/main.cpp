@@ -133,6 +133,18 @@ public:
         return *this;
     }
 
+    MyClass operator+(const MyClass& other)
+    {
+        size_t new_size = (this->size < other.size) ? this->size : other.size;
+        MyClass temp(new_size);
+
+        for (size_t i = 0; i != new_size; ++i)
+        {
+            temp.data[i] = this->data[i] + other.data[i];
+        }
+        return temp;
+    }
+
     bool operator==(const MyClass& other)
     {
         bool isEqual = false;
