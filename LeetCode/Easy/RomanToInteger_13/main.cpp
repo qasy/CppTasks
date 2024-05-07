@@ -9,10 +9,6 @@ class Solution
 public:
     Solution()
     {
-    }
-    int romanToInt(std::string s)
-    {
-        std::map<std::string, int> tableOfValues;
         tableOfValues["I"] = 1;
         tableOfValues["V"] = 5;
         tableOfValues["X"] = 10;
@@ -27,38 +23,50 @@ public:
         tableOfValues["XC"] = 90;
         tableOfValues["CD"] = 400;
         tableOfValues["CM"] = 900;
+    }
+    int romanToInt(std::string s)
+    {
 
-        int size         = s.size();
-        int i            = size - 1;
         int result       = 0;
         std::string part = "";
+        for (auto ch = s.cend() - 1; ch != s.cbegin() - 1; --ch)
+        {
+            part = *ch + part;
+            if (part.length() == 2)
+            {
+                if (tableOfValues.find(part) != tableOfValues.cend())
+                {
+                    // std::cout << tableOfValues[std::string{part[0]} + std::string{part[1]}];
+                    result += tableOfValues[std::string{part[0]} + std::string{part[1]}];
+                    part = "";
+                }
+                else
+                {
 
-        // while (i >= 0)
-        // {
-        //     if (i > 0)
-        //     {
-        //         part = s[i - 1] + s[i];
-        //         --i;
-        //     }
-        //     if (i == 0)
-        //     {
-        //         // part = s[0];
-        //         break;
-        //     }
+                    // std::cout << tableOfValues[std::string{part[0]}];
+                    // std::cout << tableOfValues[std::string{part[1]}];
 
-        //     std::cout << s[i] << std::endl;
-        //     // int tmp = 0;
-        //     // if (tableOfValues.find(part) != tableOfValues.cend())
-        //     // {
-        //     // }
-
-        //     // i = i - step;
-        // }
+                    result += tableOfValues[std::string{part[1]}];
+                    part = std::string{part[0]};
+                }
+            }
+            // std::cout << part << std::endl;
+        }
+        if (!part.empty())
+        {
+            result += tableOfValues[std::string{part[0]}];
+        }
+        return result;
     }
+
+    std::map<std::string, int> tableOfValues;
 };
 int main()
 {
     Solution s;
-    s.romanToInt("LVIII");
+    // std::cout << s.romanToInt("LVIII") << std::endl;
+    // std::cout << s.romanToInt("MCMXCIV") << std::endl;
+    std::cout << s.romanToInt("MCDLXXVI") << std::endl;
+
     return 0;
 }
