@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <map>
 #include <string>
@@ -25,6 +26,37 @@ public:
     }
     int romanToInt(std::string s)
     {
+
+        int result       = 0;
+        std::string part = "";
+        for (auto ch = s.cend() - 1; ch != s.cbegin() - 1; --ch)
+        {
+            part = *ch + part;
+            if (part.length() == 2)
+            {
+                if (tableOfValues.find(part) != tableOfValues.cend())
+                {
+                    // std::cout << tableOfValues[std::string{part[0]} + std::string{part[1]}];
+                    result += tableOfValues[std::string{part[0]} + std::string{part[1]}];
+                    part = "";
+                }
+                else
+                {
+
+                    // std::cout << tableOfValues[std::string{part[0]}];
+                    // std::cout << tableOfValues[std::string{part[1]}];
+
+                    result += tableOfValues[std::string{part[1]}];
+                    part = std::string{part[0]};
+                }
+            }
+            // std::cout << part << std::endl;
+        }
+        if (!part.empty())
+        {
+            result += tableOfValues[std::string{part[0]}];
+        }
+        return result;
     }
 
     std::map<std::string, int> tableOfValues;
@@ -32,6 +64,9 @@ public:
 int main()
 {
     Solution s;
-    s.romanToInt("LVIII");
+    // std::cout << s.romanToInt("LVIII") << std::endl;
+    // std::cout << s.romanToInt("MCMXCIV") << std::endl;
+    std::cout << s.romanToInt("MCDLXXVI") << std::endl;
+
     return 0;
 }
