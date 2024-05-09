@@ -1,103 +1,98 @@
-// * Односвязный или однонаправленный список *
-// При сравнении с динамическим массивом:
-// + Быстрое добавление и удаление элементов (изменение количества элементов).
-// - Медленный доступ к данным.
-// На основе уроков с канала SimpleCode
-// 1) https://www.youtube.com/watch?v=C9FK1pHLnhI&list=PLQOaTSbfxUtAIipl4136nwb4ISyFk8oI4&index=1
-//
-//
-//
-//
-
 #include <iostream>
 
-template <typename T>
 class List
 {
 public:
-    List();
-    ~List();
-
-    void push_back(T value);
-    size_t getSize() const
+    List()
     {
-        return this->size;
+        this->head = nullptr;
+        this->size = 0;
     }
 
-    T& operator[](size_t const index)
+    void push_back(int value)
     {
-        Node* current  = this->head;
-        size_t counter = 0;
-
-        while (current)
+        if (!head)
         {
-            if (counter == index)
-            {
-                return current->data;
-            }
-            current = current->pNext;
-            ++counter;
+            head = new Node(value);
+            ++size;
+            return;
         }
-        // @TODO wa also need to declare some return at this moment
-        // return current->data;
-    }
 
-private:
-    class Node
-    {
-    public:
-        Node* pNext;
-        T data;
-
-        // Необходимо как-то инициализировать нулем пришедший объект, поэтому вызываем конструктор по умолчанию
-        Node(T data = T(), Node* pNext = nullptr)
-        {
-            this->data  = data;
-            this->pNext = pNext;
-        }
-    };
-
-    size_t size;
-    Node* head;
-};
-
-template <typename T>
-List<T>::List()
-{
-    this->size = 0;
-    this->head = nullptr;
-}
-
-template <typename T>
-List<T>::~List()
-{
-}
-
-template <typename T>
-void List<T>::push_back(T value)
-{
-    if (head == nullptr)
-    {
-        head = new Node(value);
-    }
-    else
-    {
         Node* current = this->head;
         while (current->pNext)
         {
             current = current->pNext;
         }
         current->pNext = new Node(value);
+        ++size;
     }
-    ++size;
-}
+
+    // int& operator[](int i)
+    // {
+
+    //     Node* current = head;
+    //     int idx       = 0;
+    //     while (current)
+    //     {
+    //         if (idx == i)
+    //         {
+    //             return current->data;
+    //         }
+
+    //         if (current->pNext)
+    //         {
+    //             current = current->pNext;
+    //         }
+    //         else
+    //         {
+    //             std::cout << std::endl;
+    //             return;
+    //         }
+    //     }
+    // }
+
+    void print() const
+    {
+        Node* current = head;
+        while (current)
+        {
+            std::cout << current->data << " ";
+            current = current->pNext;
+        }
+        std::cout << std::endl;
+    }
+
+    int getSize()
+    {
+        return this->size;
+    }
+
+private:
+    class Node
+    {
+    public:
+        Node(int data = 0, Node* p = nullptr)
+        {
+            this->data  = data;
+            this->pNext = p;
+        }
+        int data;
+        Node* pNext;
+    };
+
+    Node* head;
+    int size;
+};
 
 int main()
 {
-    List<int> lst;
-    lst.push_back(5);
-    lst.push_back(10);
-    lst.push_back(15);
-    std::cout << lst[4] << std::endl;
+    List l;
+    l.push_back(5);
+    l.push_back(15);
+    l.push_back(52);
+    l.push_back(2);
+    l.print();
+    std::cout << l.getSize() << std::endl;
+
     return 0;
 }
