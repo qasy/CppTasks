@@ -184,6 +184,34 @@ public:
     }
 };
 
+class TestClass
+{
+public:
+    TestClass()
+    {
+    }
+
+    int& operator[](int i)
+    {
+        return arr[i];
+    }
+
+    friend void SetFirstElementToZero(TestClass& tc);
+
+private:
+    int arr[5]{5, 44, 421, 56, 12};
+};
+
+void SetFirstElementToZero(TestClass& tc)
+{
+    tc.arr[0] = 0;
+}
+
+// void SetElementToZero(TestClass& tc)
+// {
+//     tc.arr[0] = 0;
+// }
+
 int main()
 {
     // Human firstHuman;

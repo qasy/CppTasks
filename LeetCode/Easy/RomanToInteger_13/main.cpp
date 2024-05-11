@@ -63,21 +63,32 @@ public:
 
     int romanToInt(std::string s)
     {
-        std::unordered_map<std::string, int> tableOfValues;
-        tableOfValues["L"] = 50;
-        tableOfValues["V"] = 5;
-        tableOfValues["X"] = 10;
-        tableOfValues["I"] = 1;
-        tableOfValues["D"] = 500;
-        tableOfValues["C"] = 100;
-        tableOfValues["M"] = 1000;
+        std::unordered_map<char, int> tableOfValues(7);
+        tableOfValues['I'] = 1;
+        tableOfValues['V'] = 5;
+        tableOfValues['X'] = 10;
+        tableOfValues['L'] = 50;
+        tableOfValues['C'] = 100;
+        tableOfValues['D'] = 500;
+        tableOfValues['M'] = 1000;
 
         int result = 0;
-
-        int size = s.length();
-        for (int i = size - 1; i != -1; --i)
+        int i      = s.length() - 1;
+        int prev_i = i;
+        for (; i != -1; --i)
         {
-            std::cout << s[i] << std::endl;
+
+            // (tableOfValues[s[i]] < tableOfValues[s[prev_i]]) ? result -= tableOfValues[s[i]]
+            //  : result += tableOfValues[s[i]];
+            if (tableOfValues[s[i]] < tableOfValues[s[prev_i]])
+            {
+                result -= tableOfValues[s[i]];
+            }
+            else
+            {
+                result += tableOfValues[s[i]];
+            }
+            prev_i = i;
         }
         return result;
     }
