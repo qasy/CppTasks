@@ -15,7 +15,8 @@
                 "-pthread",
                 "-std=c++17",
                 "-Wall",
-                "-Weffc++"
+                "-Weffc++",
+                "-Wpedantic"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -40,7 +41,8 @@
                 "-pthread",
                 "-std=c++17",
                 "-Wall",
-                "-Weffc++"
+                "-Weffc++",
+                "-Wpedantic"
             ],
             "options": {
                 "cwd": "${fileDirname}"
