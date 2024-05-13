@@ -14,7 +14,8 @@
                 "${fileDirname}/${fileBasenameNoExtension}",
                 "-pthread",
                 "-std=c++17",
-                "-Wall"
+                "-Wall",
+                "-Weffc++"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -38,7 +39,8 @@
                 "${fileDirname}/${fileBasenameNoExtension}",
                 "-pthread",
                 "-std=c++17",
-                "-Wall"
+                "-Wall",
+                "-Weffc++"
             ],
             "options": {
                 "cwd": "${fileDirname}"
