@@ -80,19 +80,19 @@ public:
     }
 };
 
-class MyClass
+class TwoValuesSummator
 {
 private:
     size_t size;
     int* data;
 
 public:
-    MyClass()
+    TwoValuesSummator()
     {
         this->data = nullptr;
         this->size = 0;
     }
-    MyClass(size_t size)
+    TwoValuesSummator(size_t size)
     {
         std::cout << "MyClass(): " << this << std::endl;
         data       = new int[size];
@@ -103,7 +103,7 @@ public:
         }
     }
 
-    MyClass(const MyClass& other)
+    TwoValuesSummator(const TwoValuesSummator& other)
     {
         std::cout << "MyClass(const MyClass& other): " << this << std::endl;
         size = other.size;
@@ -114,7 +114,7 @@ public:
         }
     }
 
-    MyClass& operator=(const MyClass& other)
+    TwoValuesSummator& operator=(const TwoValuesSummator& other)
     {
         std::cout << "MyClass& operator=(const MyClass& other): " << this << " " << &other << std::endl;
         if (this == &other)
@@ -133,10 +133,10 @@ public:
         return *this;
     }
 
-    MyClass operator+(const MyClass& other)
+    TwoValuesSummator operator+(const TwoValuesSummator& other)
     {
         size_t new_size = (this->size < other.size) ? this->size : other.size;
-        MyClass temp(new_size);
+        TwoValuesSummator temp(new_size);
 
         for (size_t i = 0; i != new_size; ++i)
         {
@@ -145,7 +145,7 @@ public:
         return temp;
     }
 
-    bool operator==(const MyClass& other)
+    bool operator==(const TwoValuesSummator& other)
     {
         bool isEqual = false;
         if (!(this->data && other.data && this->size == other.size))
@@ -163,7 +163,7 @@ public:
         return true;
     }
 
-    bool operator!=(const MyClass& other)
+    bool operator!=(const TwoValuesSummator& other)
     {
         return !(*this == other);
     }
@@ -177,7 +177,7 @@ public:
         std::cout << std::endl;
     }
 
-    ~MyClass()
+    ~TwoValuesSummator()
     {
         std::cout << "~MyClass(): " << this << std::endl;
         delete[] data;
@@ -220,9 +220,9 @@ int main()
     // Point a(0, 0);
     // Point b(0, 0);
 
-    MyClass ma(10);
-    MyClass mb(4);
-    MyClass mc(ma);
+    TwoValuesSummator ma(10);
+    TwoValuesSummator mb(4);
+    TwoValuesSummator mc(ma);
     ma.print();
     mb.print();
     mc.print();
