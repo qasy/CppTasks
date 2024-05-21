@@ -39,7 +39,7 @@ void Print(char ch)
 
     std::this_thread::sleep_for(std::chrono::milliseconds(2000)); // имитация долгой логики
 
-    ul.lock(); // mtx.lock()
+    ul.lock(); // mtx.lock() - синхронизация доступа к ресурсам
 
     for (int i = 0; i < 5; ++i)
     {
