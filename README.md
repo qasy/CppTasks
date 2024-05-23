@@ -1,0 +1,1 @@
+g++  main.cpp -o main -pthread -std=c++17 -Wall -Weffc++ -Wpedantic
