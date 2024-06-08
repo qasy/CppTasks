@@ -30,14 +30,13 @@ struct Expression
 
 struct ScopedPtr
 {
-    explicit ScopedPtr(Expression* ptr = nullptr)
+    explicit ScopedPtr(Expression* ptr = 0)
     {
         ptr_ = ptr;
     }
     ~ScopedPtr()
     {
         delete ptr_;
-        ptr_ = nullptr;
     }
     Expression* get() const
     {
@@ -49,11 +48,13 @@ struct ScopedPtr
         ptr_            = nullptr;
         return tmp;
     }
-    void reset(Expression* ptr = nullptr)
+    void reset(Expression* ptr = 0)
     {
-        delete ptr_;
-        ptr_ = nullptr;
-        ptr_ = ptr;
+        if (ptr_ != ptr)
+        {
+            delete ptr_;
+            ptr_ = ptr;
+        }
     }
     Expression& operator*() const
     {
@@ -67,7 +68,6 @@ struct ScopedPtr
 private:
     // запрещаем копирование ScopedPtr
     ScopedPtr(const ScopedPtr&);
-
     ScopedPtr& operator=(const ScopedPtr&);
 
     Expression* ptr_;
